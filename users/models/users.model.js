@@ -4,7 +4,7 @@
  */
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/rest-tutorial');
+mongoose.connect('mongodb://localhost/rest-tutorial', { useNewUrlParser: true });
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -91,3 +91,4 @@ exports.removeById = (userId) => {
         });
     });
 };
+

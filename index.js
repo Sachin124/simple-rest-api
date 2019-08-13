@@ -10,7 +10,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const AuthorizationRouter = require('./authorization/routes.config');
-const UsersRouter = require('./authorization/routes.config');
+const UsersRouter = require('./users/routes.config');
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');

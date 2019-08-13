@@ -7,6 +7,8 @@ const UserModel = require('../models/users.model');
 const crypto = require('crypto');
 
 exports.insert = (req, res) => {
+    console.log(req);
+    
     let salt = crypto.randomBytes(16).toString('base64');
     let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
     req.body.password = salt + "$" + hash;
@@ -18,6 +20,8 @@ exports.insert = (req, res) => {
 };
 
 exports.list = (req, res) => {
+    console.log(req);
+
     let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
     let page = 0;
     if (req.query) {
@@ -32,7 +36,7 @@ exports.list = (req, res) => {
         });
 };
 
-exports.getById = (req, res) => {
+exports.getById = (req, res) => {    
     UserModel.findById(req.params.userId)
         .then((result) => {
             res.status(200).send(result);
